@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5BA766D227071C7E00778819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766D127071C7E00778819 /* AppDelegate.swift */; };
+		557DE967CFD8EAA985F69612 /* Pods_MyHomeTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2613480A5DDC8F2D1007C8C2 /* Pods_MyHomeTV.framework */; };
 		5BA766D427071C7E00778819 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766D327071C7E00778819 /* ViewController.swift */; };
-		5BA766D727071C7E00778819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766D527071C7E00778819 /* Main.storyboard */; };
 		5BA766D927071C8400778819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766D827071C8400778819 /* Assets.xcassets */; };
 		5BA766DC27071C8400778819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766DA27071C8400778819 /* LaunchScreen.storyboard */; };
+		5BA766E327071F4300778819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766E227071F4300778819 /* AppDelegate.swift */; };
+		5BA766E627071F5E00778819 /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766E427071F5E00778819 /* Controllers */; };
+		5BA766E727071F5E00778819 /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766E527071F5E00778819 /* Helpers */; };
+		5BA766EA27071F6D00778819 /* Managers in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766E827071F6D00778819 /* Managers */; };
+		5BA766ED27071F7500778819 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766EC27071F7500778819 /* Views */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CDCB401BEE6A6BF702DCAA4 /* Pods-MyHomeTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeTV.release.xcconfig"; path = "Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV.release.xcconfig"; sourceTree = "<group>"; };
+		2613480A5DDC8F2D1007C8C2 /* Pods_MyHomeTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHomeTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA766CE27071C7E00778819 /* MyHomeTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHomeTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BA766D127071C7E00778819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA766D327071C7E00778819 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5BA766D627071C7E00778819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BA766D827071C8400778819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BA766DB27071C8400778819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5BA766E227071F4300778819 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
+		5BA766E427071F5E00778819 /* Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Controllers; sourceTree = "<group>"; };
+		5BA766E527071F5E00778819 /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
+		5BA766E827071F6D00778819 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Managers; sourceTree = "<group>"; };
+		5BA766EC27071F7500778819 /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
+		E26CB59A0F9891131144B7B8 /* Pods-MyHomeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeTV.debug.xcconfig"; path = "Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +38,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				557DE967CFD8EAA985F69612 /* Pods_MyHomeTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D8441D5D4CA45511E465446 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E26CB59A0F9891131144B7B8 /* Pods-MyHomeTV.debug.xcconfig */,
+				0CDCB401BEE6A6BF702DCAA4 /* Pods-MyHomeTV.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5BA766C527071C7E00778819 = {
 			isa = PBXGroup;
 			children = (
 				5BA766D027071C7E00778819 /* MyHomeTV */,
 				5BA766CF27071C7E00778819 /* Products */,
+				0D8441D5D4CA45511E465446 /* Pods */,
+				800B782DFD885CBD7E8BE796 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,13 +75,24 @@
 		5BA766D027071C7E00778819 /* MyHomeTV */ = {
 			isa = PBXGroup;
 			children = (
-				5BA766D127071C7E00778819 /* AppDelegate.swift */,
+				5BA766EC27071F7500778819 /* Views */,
+				5BA766E827071F6D00778819 /* Managers */,
+				5BA766E427071F5E00778819 /* Controllers */,
+				5BA766E527071F5E00778819 /* Helpers */,
+				5BA766E227071F4300778819 /* AppDelegate.swift */,
 				5BA766D327071C7E00778819 /* ViewController.swift */,
-				5BA766D527071C7E00778819 /* Main.storyboard */,
 				5BA766D827071C8400778819 /* Assets.xcassets */,
 				5BA766DA27071C8400778819 /* LaunchScreen.storyboard */,
 			);
 			path = MyHomeTV;
+			sourceTree = "<group>";
+		};
+		800B782DFD885CBD7E8BE796 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2613480A5DDC8F2D1007C8C2 /* Pods_MyHomeTV.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BA766DF27071C8400778819 /* Build configuration list for PBXNativeTarget "MyHomeTV" */;
 			buildPhases = (
+				2AA8F30E7D051CFA1FDA4407 /* [CP] Check Pods Manifest.lock */,
 				5BA766CA27071C7E00778819 /* Sources */,
 				5BA766CB27071C7E00778819 /* Frameworks */,
 				5BA766CC27071C7E00778819 /* Resources */,
+				97399CFA1C1343478592798C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -121,34 +156,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA766DC27071C8400778819 /* LaunchScreen.storyboard in Resources */,
+				5BA766EA27071F6D00778819 /* Managers in Resources */,
 				5BA766D927071C8400778819 /* Assets.xcassets in Resources */,
-				5BA766D727071C7E00778819 /* Main.storyboard in Resources */,
+				5BA766E727071F5E00778819 /* Helpers in Resources */,
+				5BA766E627071F5E00778819 /* Controllers in Resources */,
+				5BA766ED27071F7500778819 /* Views in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2AA8F30E7D051CFA1FDA4407 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyHomeTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97399CFA1C1343478592798C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5BA766CA27071C7E00778819 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA766E327071F4300778819 /* AppDelegate.swift in Sources */,
 				5BA766D427071C7E00778819 /* ViewController.swift in Sources */,
-				5BA766D227071C7E00778819 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5BA766D527071C7E00778819 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BA766D627071C7E00778819 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5BA766DA27071C8400778819 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -278,6 +350,7 @@
 		};
 		5BA766E027071C8400778819 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E26CB59A0F9891131144B7B8 /* Pods-MyHomeTV.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -285,8 +358,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4694MUZBLD;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHomeKitUsageDescription = "I need your home";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,6 +376,7 @@
 		};
 		5BA766E127071C8400778819 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CDCB401BEE6A6BF702DCAA4 /* Pods-MyHomeTV.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,8 +384,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4694MUZBLD;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHomeKitUsageDescription = "I need your home";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
