@@ -1,5 +1,12 @@
 //
 //  Images.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  Images.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 21.09.2021.
@@ -15,3 +22,4 @@ enum Images {
     static var humidity: UIImage { UIImage(named: "humidity") ?? UIImage() }
     
 }
+

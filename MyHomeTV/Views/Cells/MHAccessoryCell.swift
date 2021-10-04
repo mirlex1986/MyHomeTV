@@ -1,5 +1,12 @@
 //
 //  MHAccessoryCell.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  MHAccessoryCell.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 24.09.2021.
@@ -18,7 +25,7 @@ class MHAccessoryCell: RxCollectionViewCell {
     var accessoryImage: UIImageView!
     private var accessoryNameLabel: UILabel!
     private var accessoryValueLabel: UILabel!
-    var accessoryStateSwich: UISwitch!
+//    var accessoryStateSwich: UISwitch!
     
     // MARK: - Lifecycle
     override func initialSetup() {
@@ -31,7 +38,7 @@ class MHAccessoryCell: RxCollectionViewCell {
         super.prepareForReuse()
         
         accessoryValueLabel.isHidden = true
-        accessoryStateSwich.isHidden = true
+//        accessoryStateSwich.isHidden = true
         
         disposeBag = DisposeBag()
     }
@@ -45,8 +52,8 @@ class MHAccessoryCell: RxCollectionViewCell {
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                        let value = characteristic.value as? Bool {
                         accessoryImage.image = UIImage(systemName: "power")
-                        accessoryStateSwich.isOn = value
-                        accessoryStateSwich.isHidden = false
+//                        accessoryStateSwich.isOn = value
+//                        accessoryStateSwich.isHidden = false
                     }
                 }
             }
@@ -56,8 +63,8 @@ class MHAccessoryCell: RxCollectionViewCell {
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                         let value = characteristic.value as? Bool {
                         accessoryImage.image = Images.lamp.withRenderingMode(.alwaysTemplate)
-                        accessoryStateSwich.isOn = value
-                        accessoryStateSwich.isHidden = false
+//                        accessoryStateSwich.isOn = value
+//                        accessoryStateSwich.isHidden = false
                     }
                 }
             }
@@ -124,16 +131,17 @@ extension MHAccessoryCell {
             $0.right.equalToSuperview().inset(10)
         }
         
-        accessoryStateSwich = UISwitch()
-        accessoryStateSwich.isHidden = true
-        mainView.addSubview(accessoryStateSwich)
-        accessoryStateSwich.snp.makeConstraints {
-            $0.right.equalToSuperview().inset(10)
-            $0.centerY.equalToSuperview()
-        }
+//        accessoryStateSwich = UISwitch()
+//        accessoryStateSwich.isHidden = true
+//        mainView.addSubview(accessoryStateSwich)
+//        accessoryStateSwich.snp.makeConstraints {
+//            $0.right.equalToSuperview().inset(10)
+//            $0.centerY.equalToSuperview()
+//        }
     }
 }
 
 extension MHAccessoryCell {
     static var cellSize: CGSize { CGSize(width: UIScreen.main.bounds.width, height: 50) }
 }
+

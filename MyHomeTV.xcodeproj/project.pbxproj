@@ -12,10 +12,19 @@
 		5BA766D927071C8400778819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766D827071C8400778819 /* Assets.xcassets */; };
 		5BA766DC27071C8400778819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766DA27071C8400778819 /* LaunchScreen.storyboard */; };
 		5BA766E327071F4300778819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766E227071F4300778819 /* AppDelegate.swift */; };
-		5BA766E627071F5E00778819 /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766E427071F5E00778819 /* Controllers */; };
-		5BA766E727071F5E00778819 /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766E527071F5E00778819 /* Helpers */; };
-		5BA766EA27071F6D00778819 /* Managers in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766E827071F6D00778819 /* Managers */; };
-		5BA766ED27071F7500778819 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766EC27071F7500778819 /* Views */; };
+		5BA766F42707228900778819 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766F32707228900778819 /* HomeViewController.swift */; };
+		5BA766F6270722A100778819 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766F5270722A100778819 /* HomeViewModel.swift */; };
+		5BA766F8270722C500778819 /* RoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766F7270722C500778819 /* RoomDetailsViewController.swift */; };
+		5BA766FA270722DA00778819 /* RoomDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766F9270722DA00778819 /* RoomDetailsViewModel.swift */; };
+		5BA766FE2707231300778819 /* MHCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766FD2707231300778819 /* MHCollectionView.swift */; };
+		5BA767002707232F00778819 /* MHButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766FF2707232F00778819 /* MHButtonCell.swift */; };
+		5BA767022707233B00778819 /* MHCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767012707233B00778819 /* MHCollectionViewCell.swift */; };
+		5BA767042707234700778819 /* MHRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767032707234700778819 /* MHRoomCell.swift */; };
+		5BA767062707235200778819 /* MHAccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767052707235200778819 /* MHAccessoryCell.swift */; };
+		5BA767082707235E00778819 /* MHDataTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767072707235E00778819 /* MHDataTypeCell.swift */; };
+		5BA7670C270723C000778819 /* UICollectionView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7670B270723C000778819 /* UICollectionView + Extention.swift */; };
+		5BA7670E270723D500778819 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7670D270723D500778819 /* Images.swift */; };
+		5BA767112707259700778819 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA767102707259700778819 /* HomeKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +35,20 @@
 		5BA766D827071C8400778819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BA766DB27071C8400778819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BA766E227071F4300778819 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
-		5BA766E427071F5E00778819 /* Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Controllers; sourceTree = "<group>"; };
-		5BA766E527071F5E00778819 /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
-		5BA766E827071F6D00778819 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Managers; sourceTree = "<group>"; };
-		5BA766EC27071F7500778819 /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
+		5BA766F32707228900778819 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5BA766F5270722A100778819 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5BA766F7270722C500778819 /* RoomDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewController.swift; sourceTree = "<group>"; };
+		5BA766F9270722DA00778819 /* RoomDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewModel.swift; sourceTree = "<group>"; };
+		5BA766FD2707231300778819 /* MHCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHCollectionView.swift; sourceTree = "<group>"; };
+		5BA766FF2707232F00778819 /* MHButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHButtonCell.swift; sourceTree = "<group>"; };
+		5BA767012707233B00778819 /* MHCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHCollectionViewCell.swift; sourceTree = "<group>"; };
+		5BA767032707234700778819 /* MHRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHRoomCell.swift; sourceTree = "<group>"; };
+		5BA767052707235200778819 /* MHAccessoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHAccessoryCell.swift; sourceTree = "<group>"; };
+		5BA767072707235E00778819 /* MHDataTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHDataTypeCell.swift; sourceTree = "<group>"; };
+		5BA7670B270723C000778819 /* UICollectionView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extention.swift"; sourceTree = "<group>"; };
+		5BA7670D270723D500778819 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		5BA7670F2707259700778819 /* MyHomeTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyHomeTV.entitlements; sourceTree = "<group>"; };
+		5BA767102707259700778819 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		E26CB59A0F9891131144B7B8 /* Pods-MyHomeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeTV.debug.xcconfig"; path = "Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA767112707259700778819 /* HomeKit.framework in Frameworks */,
 				557DE967CFD8EAA985F69612 /* Pods_MyHomeTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,10 +95,10 @@
 		5BA766D027071C7E00778819 /* MyHomeTV */ = {
 			isa = PBXGroup;
 			children = (
-				5BA766EC27071F7500778819 /* Views */,
-				5BA766E827071F6D00778819 /* Managers */,
-				5BA766E427071F5E00778819 /* Controllers */,
-				5BA766E527071F5E00778819 /* Helpers */,
+				5BA7670F2707259700778819 /* MyHomeTV.entitlements */,
+				5BA76709270723A000778819 /* Helpers */,
+				5BA766FB270722EE00778819 /* Views */,
+				5BA766EE2707224100778819 /* Controllers */,
 				5BA766E227071F4300778819 /* AppDelegate.swift */,
 				5BA766D327071C7E00778819 /* ViewController.swift */,
 				5BA766D827071C8400778819 /* Assets.xcassets */,
@@ -87,9 +107,91 @@
 			path = MyHomeTV;
 			sourceTree = "<group>";
 		};
+		5BA766EE2707224100778819 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766F02707225C00778819 /* RoomDetails */,
+				5BA766EF2707225400778819 /* HomeVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5BA766EF2707225400778819 /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766F12707226A00778819 /* ViewModel */,
+				5BA766F32707228900778819 /* HomeViewController.swift */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		5BA766F02707225C00778819 /* RoomDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766F22707227100778819 /* ViewModel */,
+				5BA766F7270722C500778819 /* RoomDetailsViewController.swift */,
+			);
+			path = RoomDetails;
+			sourceTree = "<group>";
+		};
+		5BA766F12707226A00778819 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766F5270722A100778819 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5BA766F22707227100778819 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766F9270722DA00778819 /* RoomDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5BA766FB270722EE00778819 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766FC270722FF00778819 /* Cells */,
+				5BA766FD2707231300778819 /* MHCollectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5BA766FC270722FF00778819 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5BA766FF2707232F00778819 /* MHButtonCell.swift */,
+				5BA767012707233B00778819 /* MHCollectionViewCell.swift */,
+				5BA767032707234700778819 /* MHRoomCell.swift */,
+				5BA767052707235200778819 /* MHAccessoryCell.swift */,
+				5BA767072707235E00778819 /* MHDataTypeCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5BA76709270723A000778819 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5BA7670A270723B200778819 /* Extensions */,
+				5BA7670D270723D500778819 /* Images.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5BA7670A270723B200778819 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5BA7670B270723C000778819 /* UICollectionView + Extention.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		800B782DFD885CBD7E8BE796 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BA767102707259700778819 /* HomeKit.framework */,
 				2613480A5DDC8F2D1007C8C2 /* Pods_MyHomeTV.framework */,
 			);
 			name = Frameworks;
@@ -156,11 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA766DC27071C8400778819 /* LaunchScreen.storyboard in Resources */,
-				5BA766EA27071F6D00778819 /* Managers in Resources */,
 				5BA766D927071C8400778819 /* Assets.xcassets in Resources */,
-				5BA766E727071F5E00778819 /* Helpers in Resources */,
-				5BA766E627071F5E00778819 /* Controllers in Resources */,
-				5BA766ED27071F7500778819 /* Views in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +311,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA766FA270722DA00778819 /* RoomDetailsViewModel.swift in Sources */,
+				5BA766FE2707231300778819 /* MHCollectionView.swift in Sources */,
 				5BA766E327071F4300778819 /* AppDelegate.swift in Sources */,
 				5BA766D427071C7E00778819 /* ViewController.swift in Sources */,
+				5BA766F8270722C500778819 /* RoomDetailsViewController.swift in Sources */,
+				5BA767042707234700778819 /* MHRoomCell.swift in Sources */,
+				5BA766F42707228900778819 /* HomeViewController.swift in Sources */,
+				5BA7670E270723D500778819 /* Images.swift in Sources */,
+				5BA7670C270723C000778819 /* UICollectionView + Extention.swift in Sources */,
+				5BA767022707233B00778819 /* MHCollectionViewCell.swift in Sources */,
+				5BA767082707235E00778819 /* MHDataTypeCell.swift in Sources */,
+				5BA767002707232F00778819 /* MHButtonCell.swift in Sources */,
+				5BA766F6270722A100778819 /* HomeViewModel.swift in Sources */,
+				5BA767062707235200778819 /* MHAccessoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyHomeTV/MyHomeTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4694MUZBLD;
@@ -380,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyHomeTV/MyHomeTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4694MUZBLD;

@@ -1,5 +1,11 @@
 //
 //  RoomDetailsViewController.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+//
+//  RoomDetailsViewController.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 24.09.2021.
@@ -70,22 +76,22 @@ class RoomDetailsViewController: UIViewController {
         let cell: MHAccessoryCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: service)
         
-        cell.accessoryStateSwich.rx.value
-            .subscribe(onNext: { value in
-                
-                service.characteristics.forEach { characteristic in
-                    if characteristic.characteristicType == HMCharacteristicTypePowerState {
-                        characteristic.writeValue(value) { error in
-                            if error == nil {
-                                cell.accessoryImage.tintColor = value ? .red : .gray
-                            } else {
-                                print(error?.localizedDescription as Any)
-                            }
-                        }
-                    }
-                }
-            })
-            .disposed(by: cell.disposeBag)
+//        cell.accessoryStateSwich.rx.value
+//            .subscribe(onNext: { value in
+//                
+//                service.characteristics.forEach { characteristic in
+//                    if characteristic.characteristicType == HMCharacteristicTypePowerState {
+//                        characteristic.writeValue(value) { error in
+//                            if error == nil {
+//                                cell.accessoryImage.tintColor = value ? .red : .gray
+//                            } else {
+//                                print(error?.localizedDescription as Any)
+//                            }
+//                        }
+//                    }
+//                }
+//            })
+//            .disposed(by: cell.disposeBag)
         
         return cell
     }
@@ -117,9 +123,9 @@ extension RoomDetailsViewController {
         
         let navBar = UINavigationBar()
         let navigationItem = UINavigationItem(title: viewModel.room.value?.name ?? "")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: #selector(close))
-        navigationItem.hidesBackButton = false
-        navBar.setItems([navigationItem], animated: true)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(close))
+////        navigationItem.hidesBackButton = false
+//        navBar.setItems([navigationItem], animated: true)
         navBar.backgroundColor = .clear
         view.addSubview(navBar)
         navBar.snp.makeConstraints {

@@ -1,5 +1,11 @@
 //
 //  HomeViewModel.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+//
+//  HomeViewModel.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 21.09.2021.
@@ -56,10 +62,12 @@ final class HomeViewModel {
         
         switch mainViewSwich.value {
         case .room:
+            items.removeAll()
             primaryHome.rooms.forEach { room in
                 items.append(.room(room: room))
             }
         case .dataType:
+            items.removeAll()
             accessories.value.forEach { accessory in
                 items.append(.button(text: accessory))
             }
@@ -84,7 +92,7 @@ extension HomeViewModel {
             case .room(let room):
                 return "room \(room.uniqueIdentifier)"
             case .button(let text):
-                return "button \(text.category)"
+                return "button \(text.name)"
             }
         }
     }

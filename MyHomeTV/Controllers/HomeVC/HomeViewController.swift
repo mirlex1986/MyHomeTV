@@ -1,5 +1,12 @@
 //
 //  HomeViewController.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  HomeViewController.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 21.09.2021.
@@ -87,19 +94,19 @@ class HomeViewController: UIViewController {
         let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: room)
         
-        cell.button.rx.tap
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                
-                let vc = RoomDetailsViewController()
-                    vc.viewModel = RoomDetailsViewModel(room: room)
-                
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
-            })
-            .disposed(by: cell.disposeBag)
-        
+//        cell.button.rx.primaryAction
+//            .subscribe(onNext: { [weak self] _ in
+//                guard let self = self else { return }
+//
+//                let vc = RoomDetailsViewController()
+//                    vc.viewModel = RoomDetailsViewModel(room: room)
+//
+//                vc.modalTransitionStyle = .crossDissolve
+//                vc.modalPresentationStyle = .fullScreen
+//                self.present(vc, animated: true, completion: nil)
+//            })
+//            .disposed(by: cell.disposeBag)
+//
         return cell
     }
     
@@ -107,18 +114,18 @@ class HomeViewController: UIViewController {
         let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: room)
         
-        cell.button.rx.tap
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                
-//                let vc = RoomDetailsViewController()
-//                    vc.viewModel = RoomDetailsViewModel(room: room)
+//        cell.button.rx.tap
+//            .subscribe(onNext: { [weak self] _ in
+//                guard let self = self else { return }
 //
-//                vc.modalTransitionStyle = .crossDissolve
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true, completion: nil)
-            })
-            .disposed(by: cell.disposeBag)
+////                let vc = RoomDetailsViewController()
+////                    vc.viewModel = RoomDetailsViewModel(room: room)
+////
+////                vc.modalTransitionStyle = .crossDissolve
+////                vc.modalPresentationStyle = .fullScreen
+////                self.present(vc, animated: true, completion: nil)
+//            })
+//            .disposed(by: cell.disposeBag)
         
         return cell
     }
@@ -145,11 +152,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+        return UIEdgeInsets(top: 50, left: 50, bottom: 16, right: 50)
     }
 }
 
@@ -164,7 +173,7 @@ extension HomeViewController: HMHomeManagerDelegate {
 
 extension HomeViewController {
     func makeUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 34/255, green: 62/255, blue: 47/255, alpha: 1)
         
         let navBar = UINavigationBar()
         let navigationItem = UINavigationItem(title: viewModel.primaryHome.value?.name ?? "Дом")
@@ -177,7 +186,7 @@ extension HomeViewController {
         }
         
         segmentSwich = UISegmentedControl(items: [MainViewType.room.rawValue, MainViewType.dataType.rawValue])
-        segmentSwich.backgroundColor = .lightGray
+//        segmentSwich.backgroundColor = .lightGray
         segmentSwich.selectedSegmentIndex = 0
         view.addSubview(segmentSwich)
         segmentSwich.snp.makeConstraints {
@@ -198,8 +207,8 @@ extension HomeViewController {
     private func makeCollectionView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 30
         
         let collectionView = MHCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear

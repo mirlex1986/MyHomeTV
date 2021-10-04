@@ -1,5 +1,12 @@
 //
 //  MHButtonCell.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  MHButtonCell.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 21.09.2021.
@@ -50,3 +57,4 @@ extension MHButtonCell {
 extension MHButtonCell {
     static var cellSize: CGSize { CGSize(width: UIScreen.main.bounds.width, height: 60) }
 }
+

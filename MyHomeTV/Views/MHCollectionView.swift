@@ -1,8 +1,8 @@
 //
 //  MHCollectionView.swift
-//  MyHome
+//  MyHomeTV
 //
-//  Created by Aleksey Mironov on 21.09.2021.
+//  Created by Aleksey Mironov on 01.10.2021.
 //
 
 import UIKit
@@ -20,3 +20,4 @@ extension MHCollectionView {
         register(cellType: MHDataTypeCell.self)
     }
 }
+

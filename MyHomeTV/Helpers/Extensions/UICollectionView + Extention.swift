@@ -1,5 +1,12 @@
 //
 //  UICollectionView + Extention.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  UICollectionView + Extention.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 21.09.2021.
@@ -19,3 +26,4 @@ extension UICollectionView {
         register(cellType, forCellWithReuseIdentifier: String(describing: cellType))
     }
 }
+

@@ -1,5 +1,12 @@
 //
 //  MHCollectionViewCell.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  MHCollectionViewCell.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 21.09.2021.
@@ -30,3 +37,4 @@ class RxCollectionViewCell: MHCollectionViewCell {
         disposeBag = DisposeBag()
     }
 }
+

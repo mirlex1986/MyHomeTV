@@ -1,5 +1,12 @@
 //
 //  MHDataTypeCell.swift
+//  MyHomeTV
+//
+//  Created by Aleksey Mironov on 01.10.2021.
+//
+
+//
+//  MHDataTypeCell.swift
 //  MyHome
 //
 //  Created by Aleksey Mironov on 24.09.2021.
@@ -34,8 +41,48 @@ class MHDataTypeCell: RxCollectionViewCell {
     
     func configure(with accessory: HMAccessory) {
         print("+++", accessory.category.localizedDescription)
-        accessory.services.forEach {
-            print("++", $0.localizedDescription, $0.name)
+        accessory.services.forEach { service in
+            if service.isUserInteractive || service.isPrimaryService {
+                roomAccessoriesLabel.text = service.name
+                
+                if service.serviceType == HMServiceTypeOutlet || service.serviceType == HMServiceTypeSwitch {
+                    service.characteristics.forEach { characteristic in
+                        if characteristic.characteristicType == HMCharacteristicTypePowerState,
+                           let value = characteristic.value as? Bool {
+                            roomImage.image = UIImage(systemName: "power")
+    //                        accessoryStateSwich.isOn = value
+    //                        accessoryStateSwich.isHidden = false
+                        }
+                    }
+                }
+                
+                if service.serviceType == HMServiceTypeLightbulb {
+                    service.characteristics.forEach { characteristic in
+                        if characteristic.characteristicType == HMCharacteristicTypePowerState,
+                            let value = characteristic.value as? Bool {
+                            roomImage.image = Images.lamp.withRenderingMode(.alwaysTemplate)
+    //                        accessoryStateSwich.isOn = value
+    //                        accessoryStateSwich.isHidden = false
+                        }
+                    }
+                }
+                
+                service.characteristics.forEach { characteristic in
+                    if characteristic.characteristicType == HMCharacteristicTypeCurrentRelativeHumidity,
+                       let humidityValue = (characteristic.value as? NSNumber)?.floatValue {
+//                        accessoryValueLabel.text = "\(String(format: "%.f", humidityValue))%"
+                        roomImage.image = Images.humidity.withRenderingMode(.alwaysTemplate)
+//                        accessoryValueLabel.isHidden = false
+                    }
+
+                    if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
+                       let tempValue = (characteristic.value as? NSNumber)?.floatValue {
+                       // accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
+                        roomImage.image = Images.heat.withRenderingMode(.alwaysTemplate)
+//                        accessoryValueLabel.isHidden = false
+                    }
+                }
+            }
             }
     }
     
@@ -112,3 +159,4 @@ extension MHDataTypeCell {
 extension MHDataTypeCell {
     static var cellSize: CGSize { CGSize(width: UIScreen.main.bounds.width, height: 50) }
 }
+
