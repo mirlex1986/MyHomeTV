@@ -40,6 +40,12 @@ class RoomDetailsViewController: UIViewController {
         subscribe()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navItem.title = viewModel.room.value?.name
+    }
+    
     // MARK: - Functions
     private func prepare() {
         dataSource = generateDataSource()
@@ -52,6 +58,46 @@ class RoomDetailsViewController: UIViewController {
     private func subscribe() {
         viewModel.sections.asObservable()
             .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: viewModel.disposeBag)
+        
+        collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else { return }
+                let services = self.viewModel.services.value
+                
+                services[indexPath.row].characteristics.forEach { characteristic in
+                    if characteristic.characteristicType == HMCharacteristicTypeBrightness {
+                        //route to slider
+                        print(characteristic.localizedDescription, characteristic.value)
+                    }
+                    
+                    
+                    if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
+                        characteristic.writeValue(!value) { error in
+                            if error == nil {
+                                self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
+                            } else {
+                                print(error?.localizedDescription as Any)
+                            }
+                        }
+                    }
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        collectionView.rx.didUpdateFocusInContextWithAnimationCoordinator
+            .subscribe(onNext: { [weak self] value in
+                guard let self = self else { return }
+
+                if let pindex = value.context.previouslyFocusedIndexPath, let cell = self.collectionView.cellForItem(at: pindex) {
+                    cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }
+
+                if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
+                    cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+                    self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
+                }
+            })
             .disposed(by: viewModel.disposeBag)
     }
     
@@ -76,23 +122,6 @@ class RoomDetailsViewController: UIViewController {
     private func accessoryCell(indexPath: IndexPath, service: HMService) -> MHCollectionViewCell {
         let cell: MHAccessoryCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: service)
-        
-//        cell.accessoryStateSwich.rx.value
-//            .subscribe(onNext: { value in
-//                
-//                service.characteristics.forEach { characteristic in
-//                    if characteristic.characteristicType == HMCharacteristicTypePowerState {
-//                        characteristic.writeValue(value) { error in
-//                            if error == nil {
-//                                cell.accessoryImage.tintColor = value ? .red : .gray
-//                            } else {
-//                                print(error?.localizedDescription as Any)
-//                            }
-//                        }
-//                    }
-//                }
-//            })
-//            .disposed(by: cell.disposeBag)
         
         return cell
     }

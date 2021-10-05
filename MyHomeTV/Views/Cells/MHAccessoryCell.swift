@@ -50,7 +50,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                        let value = characteristic.value as? Bool {
                         accessoryImage.image = UIImage(systemName: "power")
-                        backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
+                        backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : UIColor.clear
                     }
                 }
             }
@@ -91,8 +91,6 @@ extension MHAccessoryCell {
         mainView = UIView()
         mainView.layer.borderWidth = 2
         mainView.layer.borderColor = CGColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
-        mainView.layer.cornerRadius = 25
-        mainView.clipsToBounds = true
         addSubview(mainView)
         mainView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -112,21 +110,22 @@ extension MHAccessoryCell {
         
         accessoryNameLabel = UILabel()
         accessoryNameLabel.text = "Room name"
-        accessoryNameLabel.font = .systemFont(ofSize: 16)
+        accessoryNameLabel.textAlignment = .center
         mainView.addSubview(accessoryNameLabel)
         accessoryNameLabel.snp.makeConstraints {
-            $0.top.equalTo(accessoryImage.snp.bottom)
+            $0.centerY.equalToSuperview()
+//            $0.top.equalTo(accessoryImage.snp.bottom)
             $0.left.right.equalToSuperview().inset(4)
         }
         
         accessoryValueLabel = UILabel()
         accessoryValueLabel.isHidden = true
         accessoryValueLabel.text = ""
-        accessoryValueLabel.font = .systemFont(ofSize: 20)
+        accessoryValueLabel.textAlignment = .center
         mainView.addSubview(accessoryValueLabel)
         accessoryValueLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().inset(10)
+            $0.top.equalTo(accessoryNameLabel.snp.bottom).offset(16)
+            $0.left.right.equalToSuperview().inset(10)
         }
     }
 }

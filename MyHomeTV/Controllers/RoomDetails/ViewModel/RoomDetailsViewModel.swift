@@ -22,6 +22,7 @@ final class RoomDetailsViewModel {
     // MARK: - Properties
     var room = BehaviorRelay<HMRoom?>.init(value: nil)
     var accessories = BehaviorRelay<[HMAccessory]?>.init(value: [])
+    var services = BehaviorRelay<[HMService]>.init(value: [])
     
     let disposeBag = DisposeBag()
     let sections = BehaviorRelay<[SectionModel]>.init(value: [])
@@ -45,7 +46,17 @@ final class RoomDetailsViewModel {
         accessories
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
+                var services: [HMService] = []
                 
+                self.accessories.value?.forEach({ accessory in
+                    accessory.services.forEach { service in
+                        if service.isPrimaryService || service.isUserInteractive {
+                            services.append(service)
+                        }
+                    }
+                })
+                
+                self.services.accept(services)
                 self.configureSections()
             })
             .disposed(by: disposeBag)

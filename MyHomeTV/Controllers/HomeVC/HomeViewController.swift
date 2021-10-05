@@ -62,13 +62,13 @@ class HomeViewController: UIViewController {
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: viewModel.disposeBag)
         
-        segmentSwich.rx.selectedSegmentIndex
-            .subscribe(onNext: { [weak self] index in
-                guard let self = self else { return }
-
-                self.viewModel.mainViewSwich.accept(index == 0 ? MainViewType.room : MainViewType.dataType)
-            })
-            .disposed(by: viewModel.disposeBag)
+//        segmentSwich.rx.selectedSegmentIndex
+//            .subscribe(onNext: { [weak self] index in
+//                guard let self = self else { return }
+//
+//                self.viewModel.mainViewSwich.accept(index == 0 ? MainViewType.room : MainViewType.dataType)
+//            })
+//            .disposed(by: viewModel.disposeBag)
         
         collectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
@@ -76,10 +76,22 @@ class HomeViewController: UIViewController {
 
                 let vc = RoomDetailsViewController()
                 vc.viewModel = RoomDetailsViewModel(room: room)
-//
-//                vc.modalTransitionStyle = .crossDissolve
-//                vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        collectionView.rx.didUpdateFocusInContextWithAnimationCoordinator
+            .subscribe(onNext: { [weak self] value in
+                guard let self = self else { return }
+
+                if let pindex = value.context.previouslyFocusedIndexPath, let cell = self.collectionView.cellForItem(at: pindex) {
+                    cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }
+
+                if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
+                    cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+                    self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
+                }
             })
             .disposed(by: viewModel.disposeBag)
     }
@@ -170,21 +182,20 @@ extension HomeViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
         }
-        
-        segmentSwich = UISegmentedControl(items: [MainViewType.room.rawValue, MainViewType.dataType.rawValue])
-//        segmentSwich.backgroundColor = .lightGray
-        segmentSwich.selectedSegmentIndex = 0
-        view.addSubview(segmentSwich)
-        segmentSwich.snp.makeConstraints {
-            $0.top.equalTo(navBar.snp.bottom).offset(16)
-            $0.centerX.equalToSuperview()
-        }
+//
+//        segmentSwich = UISegmentedControl(items: [MainViewType.room.rawValue, MainViewType.dataType.rawValue])
+//        segmentSwich.selectedSegmentIndex = 0
+//        view.addSubview(segmentSwich)
+//        segmentSwich.snp.makeConstraints {
+//            $0.top.equalTo(navBar.snp.bottom).offset(16)
+//            $0.centerX.equalToSuperview()
+//        }
         
         // COLLECTION VIEW
         collectionView = makeCollectionView()
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(segmentSwich.snp.bottom).offset(20)
+            $0.top.equalTo(navBar.snp.bottom).offset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
         }
