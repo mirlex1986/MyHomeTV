@@ -42,36 +42,19 @@ final class HomeViewModel {
             .subscribe(onNext: { [weak self] home in
                 guard let self = self, home != nil, let accessories = home?.accessories else { return }
 
-                self.configureSections(by: self.mainViewSwich.value)
+                self.configureSections()
                 self.accessories.accept(accessories)
-            })
-            .disposed(by: disposeBag)
-        
-        mainViewSwich
-            .subscribe(onNext: { [weak self] value in
-                guard let self = self else { return }
-                
-                self.configureSections(by: self.mainViewSwich.value)
             })
             .disposed(by: disposeBag)
     }
     
-    func configureSections(by type: MainViewType) {
+    func configureSections() {
         guard let primaryHome = primaryHome.value else { return }
         var items: [ItemModel] = []
-        
-        switch mainViewSwich.value {
-        case .room:
-            items.removeAll()
+
             primaryHome.rooms.forEach { room in
                 items.append(.room(room: room))
             }
-        case .dataType:
-            items.removeAll()
-            accessories.value.forEach { accessory in
-                items.append(.button(text: accessory))
-            }
-        }
         
         sections.accept([.mainSection(items: items)])
     }
@@ -85,14 +68,11 @@ extension HomeViewModel {
     
     enum ItemModel {
         case room(room: HMRoom)
-        case button(text: HMAccessory)
         
         var id: String {
             switch self {
             case .room(let room):
                 return "room \(room.uniqueIdentifier)"
-            case .button(let text):
-                return "button \(text.name)"
             }
         }
     }

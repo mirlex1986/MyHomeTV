@@ -106,8 +106,6 @@ class HomeViewController: UIViewController {
                 switch item {
                 case .room(let room):
                     return self.roomCell(indexPath: indexPath, room: room)
-                case .button(let text):
-                    return self.buttonCell(indexPath: indexPath, text: text)
                 }
             },
             configureSupplementaryView: { _, _, _, _ in
@@ -129,13 +127,6 @@ class HomeViewController: UIViewController {
         
         return cell
     }
-    
-    private func buttonCell(indexPath: IndexPath, text: HMAccessory) -> MHCollectionViewCell {
-        let cell: MHDataTypeCell = collectionView.cell(indexPath: indexPath)
-        cell.configure(with: text)
-        
-        return cell
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -147,8 +138,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         switch item {
         case .room:
             return MHRoomCell.cellSize
-        case .button:
-            return MHButtonCell.cellSize
         }
     }
     
