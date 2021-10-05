@@ -21,6 +21,7 @@ import HomeKit
 class RoomDetailsViewController: UIViewController {
     // MARK: - UI
     private var collectionView: UICollectionView!
+    private let navItem = UINavigationItem(title: "Room")
     private var label: UILabel!
     
     // MARK: - Properties
@@ -113,19 +114,16 @@ extension RoomDetailsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+        return UIEdgeInsets(top: 50, left: 50, bottom: 16, right: 50)
     }
 }
 
 extension RoomDetailsViewController {
     func makeUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         
         let navBar = UINavigationBar()
-        let navigationItem = UINavigationItem(title: viewModel.room.value?.name ?? "")
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(close))
-////        navigationItem.hidesBackButton = false
-//        navBar.setItems([navigationItem], animated: true)
+        navBar.setItems([navItem], animated: true)
         navBar.backgroundColor = .clear
         view.addSubview(navBar)
         navBar.snp.makeConstraints {
@@ -146,8 +144,8 @@ extension RoomDetailsViewController {
     private func makeCollectionView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 30
         
         let collectionView = MHCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear

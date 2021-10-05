@@ -24,7 +24,6 @@ class MHRoomCell: RxCollectionViewCell {
     private var textStack: UIStackView!
     private var roomLabel: UILabel!
     private var roomAccessoriesLabel: UILabel!
-    var button: UIButton!
     
     // MARK: - Lifecycle
     override func initialSetup() {
@@ -75,15 +74,6 @@ extension MHRoomCell {
             $0.edges.equalToSuperview()
         }
         
-//        button = UIButton()
-//        button.setImage(Images.rightSide, for: .normal)
-//        mainView.addSubview(button)
-//        button.snp.makeConstraints {
-//            $0.top.bottom.equalToSuperview().inset(15)
-//            $0.right.equalToSuperview().inset(100)
-//            $0.size.equalTo(20)
-//        }
-        
         roomImage = UIImageView()
         roomImage.image = UIImage(systemName: "house")
         roomImage.tintColor = .darkGray
@@ -105,7 +95,6 @@ extension MHRoomCell {
         
         roomLabel = UILabel()
         roomLabel.text = "Room name"
-//        roomLabel.font = .systemFont(ofSize: 16)
         textStack.addSubview(roomLabel)
         roomLabel.textAlignment = .center
         roomLabel.snp.makeConstraints {
@@ -117,7 +106,6 @@ extension MHRoomCell {
         roomAccessoriesLabel = UILabel()
         roomAccessoriesLabel.text = ""
         roomAccessoriesLabel.textAlignment = .center
-//        roomAccessoriesLabel.font = .systemFont(ofSize: 13)
         textStack.addSubview(roomAccessoriesLabel)
         roomAccessoriesLabel.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(10)

@@ -22,10 +22,9 @@ import HomeKit
 class MHAccessoryCell: RxCollectionViewCell {
     // MARK: - UI
     private var mainView: UIView!
-    var accessoryImage: UIImageView!
+    private var accessoryImage: UIImageView!
     private var accessoryNameLabel: UILabel!
     private var accessoryValueLabel: UILabel!
-//    var accessoryStateSwich: UISwitch!
     
     // MARK: - Lifecycle
     override func initialSetup() {
@@ -38,7 +37,6 @@ class MHAccessoryCell: RxCollectionViewCell {
         super.prepareForReuse()
         
         accessoryValueLabel.isHidden = true
-//        accessoryStateSwich.isHidden = true
         
         disposeBag = DisposeBag()
     }
@@ -52,8 +50,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                        let value = characteristic.value as? Bool {
                         accessoryImage.image = UIImage(systemName: "power")
-//                        accessoryStateSwich.isOn = value
-//                        accessoryStateSwich.isHidden = false
+                        backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
                     }
                 }
             }
@@ -63,8 +60,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                         let value = characteristic.value as? Bool {
                         accessoryImage.image = Images.lamp.withRenderingMode(.alwaysTemplate)
-//                        accessoryStateSwich.isOn = value
-//                        accessoryStateSwich.isHidden = false
+                        backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
                     }
                 }
             }
@@ -93,8 +89,10 @@ extension MHAccessoryCell {
         backgroundColor = .clear
         
         mainView = UIView()
-        mainView.layer.borderWidth = 0.3
+        mainView.layer.borderWidth = 2
         mainView.layer.borderColor = CGColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+        mainView.layer.cornerRadius = 25
+        mainView.clipsToBounds = true
         addSubview(mainView)
         mainView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -107,9 +105,9 @@ extension MHAccessoryCell {
         accessoryImage.clipsToBounds = true
         mainView.addSubview(accessoryImage)
         accessoryImage.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().inset(8)
-            $0.size.equalTo(30)
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().inset(8)
+            $0.size.equalTo(MHRoomCell.cellSize.height / 5)
         }
         
         accessoryNameLabel = UILabel()
@@ -117,8 +115,8 @@ extension MHAccessoryCell {
         accessoryNameLabel.font = .systemFont(ofSize: 16)
         mainView.addSubview(accessoryNameLabel)
         accessoryNameLabel.snp.makeConstraints {
-            $0.left.equalTo(accessoryImage.snp.right).offset(4)
-            $0.centerY.equalToSuperview()
+            $0.top.equalTo(accessoryImage.snp.bottom)
+            $0.left.right.equalToSuperview().inset(4)
         }
         
         accessoryValueLabel = UILabel()
@@ -130,18 +128,10 @@ extension MHAccessoryCell {
             $0.centerY.equalToSuperview()
             $0.right.equalToSuperview().inset(10)
         }
-        
-//        accessoryStateSwich = UISwitch()
-//        accessoryStateSwich.isHidden = true
-//        mainView.addSubview(accessoryStateSwich)
-//        accessoryStateSwich.snp.makeConstraints {
-//            $0.right.equalToSuperview().inset(10)
-//            $0.centerY.equalToSuperview()
-//        }
     }
 }
 
 extension MHAccessoryCell {
-    static var cellSize: CGSize { CGSize(width: UIScreen.main.bounds.width, height: 50) }
+    static var cellSize: CGSize { CGSize(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.width / 6) }
 }
 

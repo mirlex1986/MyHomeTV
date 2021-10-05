@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     // MARK: - UI
     private var segmentSwich: UISegmentedControl!
     private var collectionView: UICollectionView!
+    private let navItem = UINavigationItem(title: "Дом")
     private var label: UILabel!
     
     // MARK: - Properties
@@ -68,6 +69,19 @@ class HomeViewController: UIViewController {
                 self.viewModel.mainViewSwich.accept(index == 0 ? MainViewType.room : MainViewType.dataType)
             })
             .disposed(by: viewModel.disposeBag)
+        
+        collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self, let room = self.viewModel.primaryHome.value?.rooms[indexPath.row] else { return }
+
+                let vc = RoomDetailsViewController()
+                vc.viewModel = RoomDetailsViewModel(room: room)
+//
+//                vc.modalTransitionStyle = .crossDissolve
+//                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
     private func generateDataSource() -> RxCollectionViewSectionedAnimatedDataSource<Section> {
@@ -94,38 +108,12 @@ class HomeViewController: UIViewController {
         let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: room)
         
-//        cell.button.rx.primaryAction
-//            .subscribe(onNext: { [weak self] _ in
-//                guard let self = self else { return }
-//
-//                let vc = RoomDetailsViewController()
-//                    vc.viewModel = RoomDetailsViewModel(room: room)
-//
-//                vc.modalTransitionStyle = .crossDissolve
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true, completion: nil)
-//            })
-//            .disposed(by: cell.disposeBag)
-//
         return cell
     }
     
     private func dataTypeCell(indexPath: IndexPath, room: HMRoom) -> MHCollectionViewCell {
         let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: room)
-        
-//        cell.button.rx.tap
-//            .subscribe(onNext: { [weak self] _ in
-//                guard let self = self else { return }
-//
-////                let vc = RoomDetailsViewController()
-////                    vc.viewModel = RoomDetailsViewModel(room: room)
-////
-////                vc.modalTransitionStyle = .crossDissolve
-////                vc.modalPresentationStyle = .fullScreen
-////                self.present(vc, animated: true, completion: nil)
-//            })
-//            .disposed(by: cell.disposeBag)
         
         return cell
     }
@@ -152,8 +140,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -168,17 +154,17 @@ extension HomeViewController: HMHomeManagerDelegate {
         guard let primaryHome = manager.homes.first else { return }
 
         viewModel.primaryHome.accept(primaryHome)
+        navItem.title = primaryHome.name
     }
 }
 
 extension HomeViewController {
     func makeUI() {
-        view.backgroundColor = UIColor(red: 34/255, green: 62/255, blue: 47/255, alpha: 1)
+//        view.backgroundColor = UIColor(red: 34/255, green: 62/255, blue: 47/255, alpha: 1)
         
         let navBar = UINavigationBar()
-        let navigationItem = UINavigationItem(title: viewModel.primaryHome.value?.name ?? "Дом")
-        navBar.setItems([navigationItem], animated: true)
-        navBar.backgroundColor = .clear
+        navBar.setItems([navItem], animated: true)
+        navBar.barTintColor = .blue
         view.addSubview(navBar)
         navBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
