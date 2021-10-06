@@ -62,14 +62,6 @@ class HomeViewController: UIViewController {
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: viewModel.disposeBag)
         
-//        segmentSwich.rx.selectedSegmentIndex
-//            .subscribe(onNext: { [weak self] index in
-//                guard let self = self else { return }
-//
-//                self.viewModel.mainViewSwich.accept(index == 0 ? MainViewType.room : MainViewType.dataType)
-//            })
-//            .disposed(by: viewModel.disposeBag)
-        
         collectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self, let room = self.viewModel.primaryHome.value?.rooms[indexPath.row] else { return }
@@ -150,18 +142,19 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - HMHomeManagerDelegate
-extension HomeViewController: HMHomeManagerDelegate {
+extension HomeViewController: HMHomeManagerDelegate, HMAccessoryDelegate {
     func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
         guard let primaryHome = manager.homes.first else { return }
 
         viewModel.primaryHome.accept(primaryHome)
         navItem.title = primaryHome.name
     }
+    
+    
 }
 
 extension HomeViewController {
     func makeUI() {
-//        view.backgroundColor = UIColor(red: 34/255, green: 62/255, blue: 47/255, alpha: 1)
         
         let navBar = UINavigationBar()
         navBar.setItems([navItem], animated: true)
@@ -171,14 +164,6 @@ extension HomeViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
         }
-//
-//        segmentSwich = UISegmentedControl(items: [MainViewType.room.rawValue, MainViewType.dataType.rawValue])
-//        segmentSwich.selectedSegmentIndex = 0
-//        view.addSubview(segmentSwich)
-//        segmentSwich.snp.makeConstraints {
-//            $0.top.equalTo(navBar.snp.bottom).offset(16)
-//            $0.centerX.equalToSuperview()
-//        }
         
         // COLLECTION VIEW
         collectionView = makeCollectionView()

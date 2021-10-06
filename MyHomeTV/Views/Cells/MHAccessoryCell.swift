@@ -5,14 +5,6 @@
 //  Created by Aleksey Mironov on 01.10.2021.
 //
 
-//
-//  MHAccessoryCell.swift
-//  MyHome
-//
-//  Created by Aleksey Mironov on 24.09.2021.
-//
-
-
 import UIKit
 import SnapKit
 import RxSwift
@@ -59,7 +51,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                 service.characteristics.forEach { characteristic in
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                         let value = characteristic.value as? Bool {
-                        accessoryImage.image = Images.lamp.withRenderingMode(.alwaysTemplate)
+                        accessoryImage.image = UIImage(systemName: "lightbulb")
                         backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
                     }
                 }
@@ -69,14 +61,16 @@ class MHAccessoryCell: RxCollectionViewCell {
                 if characteristic.characteristicType == HMCharacteristicTypeCurrentRelativeHumidity,
                    let humidityValue = (characteristic.value as? NSNumber)?.floatValue {
                     accessoryValueLabel.text = "\(String(format: "%.f", humidityValue))%"
-                    accessoryImage.image = Images.humidity.withRenderingMode(.alwaysTemplate)
+                    accessoryImage.image = UIImage(systemName: "humidity")?.withRenderingMode(.alwaysTemplate)
+//                    accessoryImage.image = Images.humidity.withRenderingMode(.alwaysTemplate)
                     accessoryValueLabel.isHidden = false
                 }
 
                 if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
                    let tempValue = (characteristic.value as? NSNumber)?.floatValue {
                     accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
-                    accessoryImage.image = Images.heat.withRenderingMode(.alwaysTemplate)
+                    accessoryImage.image = UIImage(systemName: "thermometer")
+//                    accessoryImage.image = Images.heat.withRenderingMode(.alwaysTemplate)
                     accessoryValueLabel.isHidden = false
                 }
             }
@@ -99,12 +93,12 @@ extension MHAccessoryCell {
         accessoryImage = UIImageView()
         accessoryImage.image = UIImage(systemName: "house")
         accessoryImage.tintColor = .gray
-        accessoryImage.contentMode = .scaleAspectFill
+        accessoryImage.contentMode = .scaleAspectFit
         accessoryImage.clipsToBounds = true
         mainView.addSubview(accessoryImage)
         accessoryImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(8)
+            $0.top.equalToSuperview().inset(16)
             $0.size.equalTo(MHRoomCell.cellSize.height / 5)
         }
         
@@ -114,7 +108,6 @@ extension MHAccessoryCell {
         mainView.addSubview(accessoryNameLabel)
         accessoryNameLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-//            $0.top.equalTo(accessoryImage.snp.bottom)
             $0.left.right.equalToSuperview().inset(4)
         }
         
@@ -122,6 +115,7 @@ extension MHAccessoryCell {
         accessoryValueLabel.isHidden = true
         accessoryValueLabel.text = ""
         accessoryValueLabel.textAlignment = .center
+        accessoryValueLabel.adjustsFontSizeToFitWidth = true
         mainView.addSubview(accessoryValueLabel)
         accessoryValueLabel.snp.makeConstraints {
             $0.top.equalTo(accessoryNameLabel.snp.bottom).offset(16)

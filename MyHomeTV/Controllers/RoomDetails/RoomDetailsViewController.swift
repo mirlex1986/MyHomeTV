@@ -75,7 +75,10 @@ class RoomDetailsViewController: UIViewController {
                     if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
                         characteristic.writeValue(!value) { error in
                             if error == nil {
-                                self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
+                                UIView.animate(withDuration: 0.5) {
+                                    self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
+                                }
+                                
                             } else {
                                 print(error?.localizedDescription as Any)
                             }
@@ -181,10 +184,6 @@ extension RoomDetailsViewController {
         collectionView.showsVerticalScrollIndicator = false
         
         return collectionView
-    }
-    
-    @objc func close(sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
     }
 }
 
