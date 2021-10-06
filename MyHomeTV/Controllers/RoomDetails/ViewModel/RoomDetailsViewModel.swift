@@ -50,7 +50,7 @@ final class RoomDetailsViewModel {
                 
                 self.accessories.value?.forEach({ accessory in
                     accessory.services.forEach { service in
-                        if service.isPrimaryService || service.isUserInteractive {
+                        if service.isPrimaryService {
                             services.append(service)
                         }
                     }
@@ -68,7 +68,7 @@ final class RoomDetailsViewModel {
         
         accessories.forEach { accessory in
             accessory.services.forEach { service in
-                if service.isUserInteractive || service.isPrimaryService {
+                if service.isPrimaryService {
                     items.append(.accessory(service: service))
                 }
             }

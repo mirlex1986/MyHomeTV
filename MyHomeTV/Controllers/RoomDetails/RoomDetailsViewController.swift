@@ -18,7 +18,7 @@ import RxCocoa
 import RxDataSources
 import HomeKit
 
-class RoomDetailsViewController: UIViewController {
+class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - UI
     private var collectionView: UICollectionView!
     private let navItem = UINavigationItem(title: "Room")
@@ -64,13 +64,12 @@ class RoomDetailsViewController: UIViewController {
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
                 let services = self.viewModel.services.value
-                
+                print(indexPath.row, services[indexPath.row].name)
                 services[indexPath.row].characteristics.forEach { characteristic in
                     if characteristic.characteristicType == HMCharacteristicTypeBrightness {
-                        //route to slider
+
                         print(characteristic.localizedDescription, characteristic.value)
                     }
-                    
                     
                     if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
                         characteristic.writeValue(!value) { error in

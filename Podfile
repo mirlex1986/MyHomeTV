@@ -5,6 +5,7 @@ target 'MyHomeTV' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'RxGesture'
   pod 'SnapKit'
 
 end

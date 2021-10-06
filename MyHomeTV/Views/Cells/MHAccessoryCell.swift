@@ -34,46 +34,52 @@ class MHAccessoryCell: RxCollectionViewCell {
     }
     
     func configure(with service: HMService) {
-        if service.isUserInteractive || service.isPrimaryService {
+        if service.accessory?.isReachable ?? false {
+            if service.isUserInteractive || service.isPrimaryService {
+                accessoryNameLabel.text = service.name
+                
+                if service.serviceType == HMServiceTypeOutlet || service.serviceType == HMServiceTypeSwitch {
+                    service.characteristics.forEach { characteristic in
+                        if characteristic.characteristicType == HMCharacteristicTypePowerState,
+                           let value = characteristic.value as? Bool {
+                            accessoryImage.image = UIImage(systemName: "power")
+                            backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : UIColor.clear
+                        }
+                    }
+                }
+                
+                if service.serviceType == HMServiceTypeLightbulb {
+                    service.characteristics.forEach { characteristic in
+                        if characteristic.characteristicType == HMCharacteristicTypePowerState,
+                           let value = characteristic.value as? Bool {
+                            accessoryImage.image = UIImage(systemName: "lightbulb")
+                            backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
+                        }
+                    }
+                }
+                
+                service.characteristics.forEach { characteristic in
+                    if characteristic.characteristicType == HMCharacteristicTypeCurrentRelativeHumidity,
+                       let humidityValue = (characteristic.value as? NSNumber)?.floatValue {
+                        accessoryValueLabel.text = "\(String(format: "%.f", humidityValue))%"
+                        accessoryImage.image = UIImage(systemName: "humidity")?.withRenderingMode(.alwaysTemplate)
+                        accessoryValueLabel.isHidden = false
+                    }
+                    
+                    if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
+                       let tempValue = (characteristic.value as? NSNumber)?.floatValue {
+                        accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
+                        accessoryImage.image = UIImage(systemName: "thermometer")
+                        accessoryValueLabel.isHidden = false
+                    }
+                }
+            }
+        } else {
+            mainView.backgroundColor = UIColor.red.withAlphaComponent(0.45)
+            accessoryImage.image = UIImage(systemName: "multiply.circle")
             accessoryNameLabel.text = service.name
-            
-            if service.serviceType == HMServiceTypeOutlet || service.serviceType == HMServiceTypeSwitch {
-                service.characteristics.forEach { characteristic in
-                    if characteristic.characteristicType == HMCharacteristicTypePowerState,
-                       let value = characteristic.value as? Bool {
-                        accessoryImage.image = UIImage(systemName: "power")
-                        backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : UIColor.clear
-                    }
-                }
-            }
-            
-            if service.serviceType == HMServiceTypeLightbulb {
-                service.characteristics.forEach { characteristic in
-                    if characteristic.characteristicType == HMCharacteristicTypePowerState,
-                        let value = characteristic.value as? Bool {
-                        accessoryImage.image = UIImage(systemName: "lightbulb")
-                        backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
-                    }
-                }
-            }
-            
-            service.characteristics.forEach { characteristic in
-                if characteristic.characteristicType == HMCharacteristicTypeCurrentRelativeHumidity,
-                   let humidityValue = (characteristic.value as? NSNumber)?.floatValue {
-                    accessoryValueLabel.text = "\(String(format: "%.f", humidityValue))%"
-                    accessoryImage.image = UIImage(systemName: "humidity")?.withRenderingMode(.alwaysTemplate)
-//                    accessoryImage.image = Images.humidity.withRenderingMode(.alwaysTemplate)
-                    accessoryValueLabel.isHidden = false
-                }
-
-                if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
-                   let tempValue = (characteristic.value as? NSNumber)?.floatValue {
-                    accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
-                    accessoryImage.image = UIImage(systemName: "thermometer")
-//                    accessoryImage.image = Images.heat.withRenderingMode(.alwaysTemplate)
-                    accessoryValueLabel.isHidden = false
-                }
-            }
+            accessoryValueLabel.text = "Accessory is not reachable"
+            accessoryValueLabel.isHidden = false
         }
     }
 }
