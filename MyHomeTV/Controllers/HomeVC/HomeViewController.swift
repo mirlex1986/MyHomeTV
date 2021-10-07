@@ -68,14 +68,18 @@ class HomeViewController: UIViewController {
         collectionView.rx.didUpdateFocusInContextWithAnimationCoordinator
             .subscribe(onNext: { [weak self] value in
                 guard let self = self else { return }
-
-                if let pindex = value.context.previouslyFocusedIndexPath, let cell = self.collectionView.cellForItem(at: pindex) {
-                    cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                
+                UIView.animate(withDuration: 0.2) {
+                    if let pindex = value.context.previouslyFocusedIndexPath, let cell = self.collectionView.cellForItem(at: pindex) {
+                        cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }
                 }
-
-                if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
-                    cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
-                    self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
+                
+                UIView.animate(withDuration: 0.2) {
+                    if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
+                        cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+                        self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
+                    }
                 }
             })
             .disposed(by: viewModel.disposeBag)
@@ -83,18 +87,15 @@ class HomeViewController: UIViewController {
     
     private func generateDataSource() -> RxCollectionViewSectionedAnimatedDataSource<Section> {
         return RxCollectionViewSectionedAnimatedDataSource<Section>(
-            animationConfiguration: AnimationConfiguration(insertAnimation: .fade,
-                                                           reloadAnimation: .fade,
-                                                           deleteAnimation: .fade),
+            animationConfiguration: AnimationConfiguration(insertAnimation: .right,
+                                                           reloadAnimation: .right,
+                                                           deleteAnimation: .right),
             configureCell: { dataSource, collectionView, indexPath, _ in
                 let item: Item = dataSource[indexPath]
                 switch item {
                 case .room(let room):
                     return self.roomCell(indexPath: indexPath, room: room)
                 }
-            },
-            configureSupplementaryView: { _, _, _, _ in
-                return UICollectionReusableView()
             })
     }
     
@@ -149,7 +150,6 @@ extension HomeViewController {
         
         let navBar = UINavigationBar()
         navBar.setItems([navItem], animated: true)
-        navBar.barTintColor = .blue
         view.addSubview(navBar)
         navBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)

@@ -59,25 +59,19 @@ class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
                 let services = self.viewModel.services.value
-
+                
                 services[indexPath.row].characteristics.forEach { characteristic in
                     print("++", characteristic.localizedDescription, characteristic.characteristicType.localizedCapitalized)
-                   
-                    if characteristic.characteristicType == HMCharacteristicTypeBrightness {
-
-                        print(characteristic.localizedDescription, characteristic.value)
-
-                    } else {
-                        if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
-                            characteristic.writeValue(!value) { error in
-                                if error == nil {
-                                    UIView.animate(withDuration: 0.5) {
-                                        self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
-                                    }
-
-                                } else {
-                                    print(error?.localizedDescription as Any)
+                    
+                    if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
+                        characteristic.writeValue(!value) { error in
+                            if error == nil {
+                                UIView.animate(withDuration: 0.5) {
+                                    self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
                                 }
+                                
+                            } else {
+                                print(error?.localizedDescription as Any)
                             }
                         }
                     }
@@ -88,15 +82,18 @@ class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionView.rx.didUpdateFocusInContextWithAnimationCoordinator
             .subscribe(onNext: { [weak self] value in
                 guard let self = self else { return }
-
-                if let pindex = value.context.previouslyFocusedIndexPath, let cell = self.collectionView.cellForItem(at: pindex) {
-                    cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                UIView.animate(withDuration: 0.2) {
+                    if let pindex = value.context.previouslyFocusedIndexPath, let cell = self.collectionView.cellForItem(at: pindex) {
+                        cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }
                 }
-
-                if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
-                    cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
-                    self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
+                UIView.animate(withDuration: 0.2) {
+                    if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
+                        cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+                        self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
+                    }
                 }
+                
             })
             .disposed(by: viewModel.disposeBag)
     }
@@ -176,7 +173,7 @@ extension RoomDetailsViewController {
     
     @objc func longTap(_ sender: UILongPressGestureRecognizer) {
         let services = self.viewModel.services.value
-        let index = sender.rx.base.view
+        let index = sender
         print(index)
 
 //        services[indexPath.row].characteristics.forEach { characteristic in
