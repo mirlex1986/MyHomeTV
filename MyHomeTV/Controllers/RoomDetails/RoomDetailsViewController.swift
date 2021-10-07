@@ -60,6 +60,11 @@ class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
                 guard let self = self else { return }
                 let services = self.viewModel.services.value
                 
+                if services[indexPath.row].serviceType == HMServiceTypeLightbulb {
+                    print("+++", services[indexPath.row].name)
+                    //route to slider
+                }
+                
                 services[indexPath.row].characteristics.forEach { characteristic in
                     print("++", characteristic.localizedDescription, characteristic.characteristicType.localizedCapitalized)
                     
