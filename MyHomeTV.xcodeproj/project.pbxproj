@@ -21,12 +21,9 @@
 		5BA767022707233B00778819 /* MHCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767012707233B00778819 /* MHCollectionViewCell.swift */; };
 		5BA767042707234700778819 /* MHRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767032707234700778819 /* MHRoomCell.swift */; };
 		5BA767062707235200778819 /* MHAccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767052707235200778819 /* MHAccessoryCell.swift */; };
-		5BA767082707235E00778819 /* MHDataTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA767072707235E00778819 /* MHDataTypeCell.swift */; };
 		5BA7670C270723C000778819 /* UICollectionView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7670B270723C000778819 /* UICollectionView + Extention.swift */; };
 		5BA7670E270723D500778819 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7670D270723D500778819 /* Images.swift */; };
 		5BA767112707259700778819 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA767102707259700778819 /* HomeKit.framework */; };
-		5BCDA9BB270C85DB0010CB50 /* LightbulbStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA9BA270C85DA0010CB50 /* LightbulbStateViewController.swift */; };
-		5BCDA9BD270C85EA0010CB50 /* LightbulbStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA9BC270C85EA0010CB50 /* LightbulbStateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,13 +43,10 @@
 		5BA767012707233B00778819 /* MHCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHCollectionViewCell.swift; sourceTree = "<group>"; };
 		5BA767032707234700778819 /* MHRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHRoomCell.swift; sourceTree = "<group>"; };
 		5BA767052707235200778819 /* MHAccessoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHAccessoryCell.swift; sourceTree = "<group>"; };
-		5BA767072707235E00778819 /* MHDataTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHDataTypeCell.swift; sourceTree = "<group>"; };
 		5BA7670B270723C000778819 /* UICollectionView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extention.swift"; sourceTree = "<group>"; };
 		5BA7670D270723D500778819 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5BA7670F2707259700778819 /* MyHomeTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyHomeTV.entitlements; sourceTree = "<group>"; };
 		5BA767102707259700778819 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
-		5BCDA9BA270C85DA0010CB50 /* LightbulbStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightbulbStateViewController.swift; sourceTree = "<group>"; };
-		5BCDA9BC270C85EA0010CB50 /* LightbulbStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightbulbStateViewModel.swift; sourceTree = "<group>"; };
 		E26CB59A0F9891131144B7B8 /* Pods-MyHomeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeTV.debug.xcconfig"; path = "Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +72,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5B299CBC270EECF700D2EFB8 /* Sevices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sevices;
+			sourceTree = "<group>";
+		};
 		5BA766C527071C7E00778819 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +100,7 @@
 		5BA766D027071C7E00778819 /* MyHomeTV */ = {
 			isa = PBXGroup;
 			children = (
+				5B299CBC270EECF700D2EFB8 /* Sevices */,
 				5BA7670F2707259700778819 /* MyHomeTV.entitlements */,
 				5BA76709270723A000778819 /* Helpers */,
 				5BA766FB270722EE00778819 /* Views */,
@@ -114,7 +116,6 @@
 		5BA766EE2707224100778819 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BCDA9B8270C85A20010CB50 /* LightbulbStateVC */,
 				5BA766F02707225C00778819 /* RoomDetails */,
 				5BA766EF2707225400778819 /* HomeVC */,
 			);
@@ -171,7 +172,6 @@
 				5BA767012707233B00778819 /* MHCollectionViewCell.swift */,
 				5BA767032707234700778819 /* MHRoomCell.swift */,
 				5BA767052707235200778819 /* MHAccessoryCell.swift */,
-				5BA767072707235E00778819 /* MHDataTypeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -191,23 +191,6 @@
 				5BA7670B270723C000778819 /* UICollectionView + Extention.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		5BCDA9B8270C85A20010CB50 /* LightbulbStateVC */ = {
-			isa = PBXGroup;
-			children = (
-				5BCDA9B9270C85BB0010CB50 /* ViewModel */,
-				5BCDA9BA270C85DA0010CB50 /* LightbulbStateViewController.swift */,
-			);
-			path = LightbulbStateVC;
-			sourceTree = "<group>";
-		};
-		5BCDA9B9270C85BB0010CB50 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				5BCDA9BC270C85EA0010CB50 /* LightbulbStateViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		800B782DFD885CBD7E8BE796 /* Frameworks */ = {
@@ -335,17 +318,14 @@
 			files = (
 				5BA766FA270722DA00778819 /* RoomDetailsViewModel.swift in Sources */,
 				5BA766FE2707231300778819 /* MHCollectionView.swift in Sources */,
-				5BCDA9BD270C85EA0010CB50 /* LightbulbStateViewModel.swift in Sources */,
 				5BA766E327071F4300778819 /* AppDelegate.swift in Sources */,
 				5BA766D427071C7E00778819 /* ViewController.swift in Sources */,
 				5BA766F8270722C500778819 /* RoomDetailsViewController.swift in Sources */,
 				5BA767042707234700778819 /* MHRoomCell.swift in Sources */,
-				5BCDA9BB270C85DB0010CB50 /* LightbulbStateViewController.swift in Sources */,
 				5BA766F42707228900778819 /* HomeViewController.swift in Sources */,
 				5BA7670E270723D500778819 /* Images.swift in Sources */,
 				5BA7670C270723C000778819 /* UICollectionView + Extention.swift in Sources */,
 				5BA767022707233B00778819 /* MHCollectionViewCell.swift in Sources */,
-				5BA767082707235E00778819 /* MHDataTypeCell.swift in Sources */,
 				5BA767002707232F00778819 /* MHButtonCell.swift in Sources */,
 				5BA766F6270722A100778819 /* HomeViewModel.swift in Sources */,
 				5BA767062707235200778819 /* MHAccessoryCell.swift in Sources */,

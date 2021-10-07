@@ -5,13 +5,6 @@
 //  Created by Aleksey Mironov on 01.10.2021.
 //
 
-//
-//  RoomDetailsViewModel.swift
-//  MyHome
-//
-//  Created by Aleksey Mironov on 24.09.2021.
-//
-
 import Foundation
 import RxSwift
 import RxCocoa

@@ -4,12 +4,6 @@
 //
 //  Created by Aleksey Mironov on 01.10.2021.
 //
-//
-//  RoomDetailsViewController.swift
-//  MyHome
-//
-//  Created by Aleksey Mironov on 24.09.2021.
-//
 
 import UIKit
 import SnapKit
@@ -23,6 +17,7 @@ class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
     private var collectionView: UICollectionView!
     private let navItem = UINavigationItem(title: "Room")
     private var label: UILabel!
+    var gestureLongTap: UILongPressGestureRecognizer!
     
     // MARK: - Properties
     typealias Item = RoomDetailsViewModel.ItemModel
@@ -64,22 +59,25 @@ class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
                 let services = self.viewModel.services.value
-                print(indexPath.row, services[indexPath.row].name)
+
                 services[indexPath.row].characteristics.forEach { characteristic in
+                    print("++", characteristic.localizedDescription, characteristic.characteristicType.localizedCapitalized)
+                   
                     if characteristic.characteristicType == HMCharacteristicTypeBrightness {
 
                         print(characteristic.localizedDescription, characteristic.value)
-                    }
-                    
-                    if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
-                        characteristic.writeValue(!value) { error in
-                            if error == nil {
-                                UIView.animate(withDuration: 0.5) {
-                                    self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
+
+                    } else {
+                        if characteristic.characteristicType == HMCharacteristicTypePowerState, let value = characteristic.value as? Bool {
+                            characteristic.writeValue(!value) { error in
+                                if error == nil {
+                                    UIView.animate(withDuration: 0.5) {
+                                        self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
+                                    }
+
+                                } else {
+                                    print(error?.localizedDescription as Any)
                                 }
-                                
-                            } else {
-                                print(error?.localizedDescription as Any)
                             }
                         }
                     }
@@ -170,6 +168,25 @@ extension RoomDetailsViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
         }
+        
+        
+        
+        
+    }
+    
+    @objc func longTap(_ sender: UILongPressGestureRecognizer) {
+        let services = self.viewModel.services.value
+        let index = sender.rx.base.view
+        print(index)
+
+//        services[indexPath.row].characteristics.forEach { characteristic in
+//            if characteristic.characteristicType == HMCharacteristicTypeBrightness {
+//// TODO: - Route to brighnessVC
+////                        let vc = LightbulbStateViewController()
+////                        self.present(vc, animated: true, completion: nil)
+//                print(characteristic.localizedDescription, characteristic.value)
+//            }
+//        }
     }
     
     private func makeCollectionView() -> UICollectionView {

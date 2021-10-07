@@ -5,13 +5,6 @@
 //  Created by Aleksey Mironov on 01.10.2021.
 //
 
-//
-//  MHButtonCell.swift
-//  MyHome
-//
-//  Created by Aleksey Mironov on 21.09.2021.
-//
-
 import UIKit
 import SnapKit
 import RxSwift

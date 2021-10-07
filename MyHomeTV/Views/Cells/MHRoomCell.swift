@@ -5,13 +5,6 @@
 //  Created by Aleksey Mironov on 01.10.2021.
 //
 
-//
-//  MHRoomCell.swift
-//  MyHome
-//
-//  Created by Aleksey Mironov on 21.09.2021.
-//
-
 import UIKit
 import SnapKit
 import RxSwift
@@ -23,7 +16,8 @@ class MHRoomCell: RxCollectionViewCell {
     private var roomImage: UIImageView!
     private var textStack: UIStackView!
     private var roomLabel: UILabel!
-    private var roomAccessoriesLabel: UILabel!
+    private var roomTemperatureLabel: UILabel!
+    private var roomHumidityLabel: UILabel!
     
     // MARK: - Lifecycle
     override func initialSetup() {
@@ -40,19 +34,19 @@ class MHRoomCell: RxCollectionViewCell {
     
     func configure(with room: HMRoom) {
         roomLabel.text = room.name
-        roomAccessoriesLabel.text?.removeAll()
+        roomTemperatureLabel.text?.removeAll()
         room.accessories.forEach { accessory in
             accessory.services.forEach { service in
                 if service.isPrimaryService || service.isUserInteractive {
                     service.characteristics.forEach { characteristic in
                         if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
                            let tempValue = (characteristic.value as? NSNumber)?.floatValue {
-                            roomAccessoriesLabel.text?.append("\(String(format: "%.1f", tempValue))º ")
+                            roomTemperatureLabel.text = "\(String(format: "%.1f", tempValue))º "
                         }
                         
                         if characteristic.characteristicType == HMCharacteristicTypeCurrentRelativeHumidity,
                            let humidityValue = (characteristic.value as? NSNumber)?.floatValue {
-                            roomAccessoriesLabel.text?.append("\(String(format: "%.f", humidityValue))% ")
+                            roomHumidityLabel.text = "\(String(format: "%.f", humidityValue))% "
                         }
                     }
                 }
@@ -103,13 +97,23 @@ extension MHRoomCell {
             
         }
         
-        roomAccessoriesLabel = UILabel()
-        roomAccessoriesLabel.text = ""
-        roomAccessoriesLabel.textAlignment = .center
-        textStack.addSubview(roomAccessoriesLabel)
-        roomAccessoriesLabel.snp.makeConstraints {
+        roomTemperatureLabel = UILabel()
+        roomTemperatureLabel.text = ""
+        roomTemperatureLabel.textAlignment = .center
+        textStack.addSubview(roomTemperatureLabel)
+        roomTemperatureLabel.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(10)
             $0.top.equalTo(roomLabel.snp.bottom).offset(20)
+//            $0.bottom.equalToSuperview().inset(20)
+        }
+        
+        roomHumidityLabel = UILabel()
+        roomHumidityLabel.text = ""
+        roomHumidityLabel.textAlignment = .center
+        textStack.addSubview(roomHumidityLabel)
+        roomHumidityLabel.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(10)
+            $0.top.equalTo(roomTemperatureLabel.snp.bottom).offset(20)
             $0.bottom.equalToSuperview().inset(20)
         }
     }

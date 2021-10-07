@@ -16,7 +16,7 @@ class MHAccessoryCell: RxCollectionViewCell {
     private var mainView: UIView!
     private var accessoryImage: UIImageView!
     private var accessoryNameLabel: UILabel!
-    private var accessoryValueLabel: UILabel!
+    var accessoryValueLabel: UILabel!
     
     // MARK: - Lifecycle
     override func initialSetup() {
@@ -98,7 +98,6 @@ extension MHAccessoryCell {
         
         accessoryImage = UIImageView()
         accessoryImage.image = UIImage(systemName: "house")
-        accessoryImage.tintColor = .gray
         accessoryImage.contentMode = .scaleAspectFit
         accessoryImage.clipsToBounds = true
         mainView.addSubview(accessoryImage)

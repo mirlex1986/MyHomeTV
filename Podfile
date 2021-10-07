@@ -5,7 +5,7 @@ target 'MyHomeTV' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
-  pod 'RxGesture'
+  pod 'TvOSSlider', :git => 'https://github.com/zattoo/TvOSSlider.git'
   pod 'SnapKit'
 
 end
