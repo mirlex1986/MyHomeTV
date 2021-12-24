@@ -43,7 +43,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                         if characteristic.characteristicType == HMCharacteristicTypePowerState,
                            let value = characteristic.value as? Bool {
                             accessoryImage.image = UIImage(systemName: "power")
-                            backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : UIColor.clear
+                            mainView.backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : UIColor.clear
                         }
                     }
                 }
@@ -53,7 +53,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                         if characteristic.characteristicType == HMCharacteristicTypePowerState,
                            let value = characteristic.value as? Bool {
                             accessoryImage.image = UIImage(systemName: "lightbulb")
-                            backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
+                            mainView.backgroundColor = value ? UIColor.yellow.withAlphaComponent(0.45) : .clear
                         }
                     }
                 }
@@ -74,6 +74,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                     }
                 }
             }
+            
         } else {
             mainView.backgroundColor = UIColor.red.withAlphaComponent(0.45)
             accessoryImage.image = UIImage(systemName: "multiply.circle")
@@ -91,6 +92,7 @@ extension MHAccessoryCell {
         mainView = UIView()
         mainView.layer.borderWidth = 2
         mainView.layer.borderColor = CGColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+        mainView.layer.cornerRadius = 25
         addSubview(mainView)
         mainView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -103,7 +105,7 @@ extension MHAccessoryCell {
         mainView.addSubview(accessoryImage)
         accessoryImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(24)
             $0.size.equalTo(MHRoomCell.cellSize.height / 5)
         }
         

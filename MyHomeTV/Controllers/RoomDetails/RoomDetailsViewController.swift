@@ -12,12 +12,13 @@ import RxCocoa
 import RxDataSources
 import HomeKit
 
-class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
+class RoomDetailsViewController: UIViewController {
     // MARK: - UI
     private var collectionView: UICollectionView!
     private let navItem = UINavigationItem(title: "Room")
+    private var accessotyView: UIView!
+    private var characteristicsView: UIView!
     private var label: UILabel!
-    var gestureLongTap: UILongPressGestureRecognizer!
     
     // MARK: - Properties
     typealias Item = RoomDetailsViewModel.ItemModel
@@ -74,9 +75,6 @@ class RoomDetailsViewController: UIViewController, UIGestureRecognizerDelegate {
                                 UIView.animate(withDuration: 0.5) {
                                     self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
                                 }
-                                
-                            } else {
-                                print(error?.localizedDescription as Any)
                             }
                         }
                     }
@@ -170,25 +168,6 @@ extension RoomDetailsViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
         }
-        
-        
-        
-        
-    }
-    
-    @objc func longTap(_ sender: UILongPressGestureRecognizer) {
-        let services = self.viewModel.services.value
-        let index = sender
-        print(index)
-
-//        services[indexPath.row].characteristics.forEach { characteristic in
-//            if characteristic.characteristicType == HMCharacteristicTypeBrightness {
-//// TODO: - Route to brighnessVC
-////                        let vc = LightbulbStateViewController()
-////                        self.present(vc, animated: true, completion: nil)
-//                print(characteristic.localizedDescription, characteristic.value)
-//            }
-//        }
     }
     
     private func makeCollectionView() -> UICollectionView {
@@ -204,4 +183,3 @@ extension RoomDetailsViewController {
         return collectionView
     }
 }
-

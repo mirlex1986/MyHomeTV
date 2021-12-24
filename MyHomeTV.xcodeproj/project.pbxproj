@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		557DE967CFD8EAA985F69612 /* Pods_MyHomeTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2613480A5DDC8F2D1007C8C2 /* Pods_MyHomeTV.framework */; };
-		5B299CC3270F05F700D2EFB8 /* LightbulbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B299CC2270F05F700D2EFB8 /* LightbulbViewController.swift */; };
-		5B299CC6270F062300D2EFB8 /* LightbulbViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B299CC5270F062300D2EFB8 /* LightbulbViewModel.swift */; };
-		5B299CC8270F064300D2EFB8 /* MHSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B299CC7270F064300D2EFB8 /* MHSliderCell.swift */; };
 		5BA766D427071C7E00778819 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA766D327071C7E00778819 /* ViewController.swift */; };
 		5BA766D927071C8400778819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766D827071C8400778819 /* Assets.xcassets */; };
 		5BA766DC27071C8400778819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA766DA27071C8400778819 /* LaunchScreen.storyboard */; };
@@ -32,9 +29,6 @@
 /* Begin PBXFileReference section */
 		0CDCB401BEE6A6BF702DCAA4 /* Pods-MyHomeTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeTV.release.xcconfig"; path = "Target Support Files/Pods-MyHomeTV/Pods-MyHomeTV.release.xcconfig"; sourceTree = "<group>"; };
 		2613480A5DDC8F2D1007C8C2 /* Pods_MyHomeTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHomeTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B299CC2270F05F700D2EFB8 /* LightbulbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightbulbViewController.swift; sourceTree = "<group>"; };
-		5B299CC5270F062300D2EFB8 /* LightbulbViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightbulbViewModel.swift; sourceTree = "<group>"; };
-		5B299CC7270F064300D2EFB8 /* MHSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHSliderCell.swift; sourceTree = "<group>"; };
 		5BA766CE27071C7E00778819 /* MyHomeTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHomeTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA766D327071C7E00778819 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5BA766D827071C8400778819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,23 +79,6 @@
 			path = Sevices;
 			sourceTree = "<group>";
 		};
-		5B299CC1270F05BD00D2EFB8 /* LightbulbVC */ = {
-			isa = PBXGroup;
-			children = (
-				5B299CC4270F060000D2EFB8 /* ViewModel */,
-				5B299CC2270F05F700D2EFB8 /* LightbulbViewController.swift */,
-			);
-			path = LightbulbVC;
-			sourceTree = "<group>";
-		};
-		5B299CC4270F060000D2EFB8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				5B299CC5270F062300D2EFB8 /* LightbulbViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		5BA766C527071C7E00778819 = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +116,6 @@
 		5BA766EE2707224100778819 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B299CC1270F05BD00D2EFB8 /* LightbulbVC */,
 				5BA766F02707225C00778819 /* RoomDetails */,
 				5BA766EF2707225400778819 /* HomeVC */,
 			);
@@ -196,7 +172,6 @@
 				5BA767012707233B00778819 /* MHCollectionViewCell.swift */,
 				5BA767032707234700778819 /* MHRoomCell.swift */,
 				5BA767052707235200778819 /* MHAccessoryCell.swift */,
-				5B299CC7270F064300D2EFB8 /* MHSliderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -346,17 +321,14 @@
 				5BA766E327071F4300778819 /* AppDelegate.swift in Sources */,
 				5BA766D427071C7E00778819 /* ViewController.swift in Sources */,
 				5BA766F8270722C500778819 /* RoomDetailsViewController.swift in Sources */,
-				5B299CC8270F064300D2EFB8 /* MHSliderCell.swift in Sources */,
 				5BA767042707234700778819 /* MHRoomCell.swift in Sources */,
 				5BA766F42707228900778819 /* HomeViewController.swift in Sources */,
 				5BA7670E270723D500778819 /* Images.swift in Sources */,
 				5BA7670C270723C000778819 /* UICollectionView + Extention.swift in Sources */,
 				5BA767022707233B00778819 /* MHCollectionViewCell.swift in Sources */,
-				5B299CC3270F05F700D2EFB8 /* LightbulbViewController.swift in Sources */,
 				5BA767002707232F00778819 /* MHButtonCell.swift in Sources */,
 				5BA766F6270722A100778819 /* HomeViewModel.swift in Sources */,
 				5BA767062707235200778819 /* MHAccessoryCell.swift in Sources */,
-				5B299CC6270F062300D2EFB8 /* LightbulbViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

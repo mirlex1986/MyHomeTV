@@ -75,7 +75,7 @@ class HomeViewController: UIViewController {
                     }
                 }
                 
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.1) {
                     if let index = value.context.nextFocusedIndexPath, let cell = self.collectionView.cellForItem(at: index) {
                         cell.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
                         self.collectionView.scrollToItem(at: index, at: [.centeredHorizontally, .centeredVertically], animated: true)
