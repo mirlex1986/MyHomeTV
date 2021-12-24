@@ -74,6 +74,7 @@ class RoomDetailsViewController: UIViewController {
                             if error == nil {
                                 UIView.animate(withDuration: 0.5) {
                                     self.collectionView.cellForItem(at: indexPath)?.backgroundColor = value ? .clear : UIColor.yellow.withAlphaComponent(0.45)
+                                    self.collectionView.cellForItem(at: indexPath)?.layer.cornerRadius = 25
                                 }
                             }
                         }

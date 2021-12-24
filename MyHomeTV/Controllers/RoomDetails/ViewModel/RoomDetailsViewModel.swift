@@ -83,7 +83,7 @@ extension RoomDetailsViewModel {
         var id: String {
             switch self {
             case .accessory(let service):
-                return "accessory \(service.characteristics.map({ $0.value }))"
+                return "accessory \(service.characteristics.map({ $0.value })) \(service)"
             }
         }
     }
