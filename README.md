@@ -1,6 +1,6 @@
 # MyHomeTV
 
-Simple way to control your HomeKit devices (lightbulbs, switches and sensors)
+Simple way to control your HomeKit devices on AppleTV (lightbulbs, switches and sensors)
 
 
 
